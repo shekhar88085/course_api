@@ -29,9 +29,37 @@ public class topicController {
 		return topicservice.getTopic(id);
 	}
 	
+	//get request
 	@RequestMapping(method = RequestMethod.POST,value="/topics")
 	public void addTopic(@RequestBody Topic topic) {
 		topicservice.addTopic(topic);
 	}
 	
+	//update/put request
+	@RequestMapping(method = RequestMethod.PUT,value="/topics/{id}")
+	public void updateTopic(@RequestBody Topic topic,@PathVariable String id) {
+		topicservice.updateTopic(id,topic);
+	}
+	
+	//delete request
+	@RequestMapping(method = RequestMethod.DELETE,value="/topics/{id}")
+	public void deleteTopic(@PathVariable String id) {
+		topicservice.deleteTopic(id);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

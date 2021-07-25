@@ -17,19 +17,19 @@ public class topicController {
 	@Autowired
 	private topicService topicservice;
 	 
-	
+	//default get request
 	@RequestMapping("/topics") 
 	public List<Topic> getAllTopics() {
 		return topicservice.getAllTopics();
 	} 
 	
-	//getting topic url by id
+	//getting topic data by id
 	@RequestMapping("/topics/{id}")
 	public Topic getTopic(@PathVariable String id) {
 		return topicservice.getTopic(id);
 	}
 	
-	//get request
+	//post request
 	@RequestMapping(method = RequestMethod.POST,value="/topics")
 	public void addTopic(@RequestBody Topic topic) {
 		topicservice.addTopic(topic);

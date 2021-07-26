@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class topicService {
 
 	@Autowired
-	private topicsRepository topicsRepository;
+	private topicsRepository topicRepository;
 	
 	List<Topic> topics= new ArrayList<>( Arrays.asList(
 			
@@ -24,20 +24,20 @@ public class topicService {
 	public List<Topic> getAllTopics(){
 		//return topics;
 		List<Topic> topics=new ArrayList<>();
-		topicsRepository.findAll().forEach(topics::add);
+		topicRepository.findAll().forEach(topics::add);
 		return topics;
 		
 	}
 	
 	public Topic getTopic(String id) {
 		
-		return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
-		
+		//return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
+		return topicRepository.findById(id).orElse(null);
 	}
 	
 	public void addTopic(Topic topic) {
 		//topics.add(topic);
-		topicsRepository.save(topic);
+		topicRepository.save(topic);
 	}
 
 	public void updateTopic(String id, Topic topic) {
@@ -49,12 +49,12 @@ public class topicService {
 //				return;
 //			}
 //		}
-		topicsRepository.save(topic);
+		topicRepository.save(topic);
 	}
 
 	public void deleteTopic(String id) {
 //		topics.removeIf(t->t.getId().equals(id));
-		topicsRepository.deleteById(id);
+		topicRepository.deleteById(id);
 		
 	}
 	
